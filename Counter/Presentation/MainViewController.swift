@@ -9,8 +9,8 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    @IBOutlet weak var counterLabel: UILabel!
-    @IBOutlet weak var historyText: UITextView!
+    @IBOutlet private weak var counterLabel: UILabel!
+    @IBOutlet private weak var historyText: UITextView!
     
     private var counter = 0
     
@@ -20,11 +20,11 @@ final class MainViewController: UIViewController {
         updateUI(action: .start)
     }
     
-    @IBAction func incrementButtonDidTap(_ sender: Any) {
+    @IBAction private func incrementButtonDidTap(_ sender: Any) {
         updateUI(action: .increment)
     }
     
-    @IBAction func decrementButtonDidTap(_ sender: Any) {
+    @IBAction private func decrementButtonDidTap(_ sender: Any) {
         if counter == 0 {
             updateUI(action: .negative)
             return
@@ -32,7 +32,7 @@ final class MainViewController: UIViewController {
         updateUI(action: .decrement)
     }
     
-    @IBAction func resetButtonDidTap(_ sender: Any) {
+    @IBAction private func resetButtonDidTap(_ sender: Any) {
         if counter > 0 {
             updateUI(action: .reset)
         }
@@ -46,7 +46,7 @@ final class MainViewController: UIViewController {
             counter -= 1
         case .reset:
             counter = 0
-        case .start, .negative:
+        default:
             break
         }
         
